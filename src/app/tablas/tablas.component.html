@@ -1,0 +1,10 @@
+<table>
+    <thead>
+        <th *ngFor="let clave of claves">{{clave}}</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dato of datos">
+            <td *ngFor="let valor of dato">{{valor}}</td>
+        </tr>
+    </tbody>
+</table>

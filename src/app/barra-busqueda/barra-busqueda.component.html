@@ -1,0 +1,5 @@
+<!-- <input type="text" placeholder="Buscar Nombre" (keyup)="buscar($event)" #barra_busqueda> -->
+<label>Seleciona la liga una liga: </label>
+<select (change)="ligaSelecionada($event)" #liga_select>
+    <option  *ngFor="let competicion of competiciones" value="{{competicion.nombre}}" >{{competicion.nombre}}</option>
+</select>
