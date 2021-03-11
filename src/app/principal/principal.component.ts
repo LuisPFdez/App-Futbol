@@ -8,7 +8,7 @@ import { DataService } from "../services/data.service";
 export class PrincipalComponent implements OnInit {
 
   codigoLiga?: number;
-  imagenesEquipos!: Array<String>;
+  imagenesEquipos!: Array<string>;
   clavesJugadores!: Array<string>;
   datosJugadores!: Array<Array<any>>;
 
@@ -19,8 +19,9 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  convertirATabla(datos: Array<any>) {
+  //Tablas necesita recibir dos variables mediante input. 
+  //convertir a trabla se encarga de Recibir un Array de objectos y pasarlos a un formato aceptado por el componente tablas
+  private convertirATabla(datos: Array<any>) {
 
     var claves: Array<string> = new Array();
     var datosArray: Array<Array<any>> = new Array();

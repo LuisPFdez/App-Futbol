@@ -17,8 +17,8 @@ export class BarraBusquedaComponent implements OnInit{
   constructor(private datos: DataService) {
     this.busqueda = new EventEmitter<number>()
   }
+
   ngOnInit(){
-    
     this.datos.obtenerLigas().subscribe((datosLigas) => {
       var ligas:any = JSON.parse(JSON.stringify(datosLigas)).api.leagues
       for(var i in ligas){

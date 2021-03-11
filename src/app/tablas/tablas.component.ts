@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class TablasComponent  {
   @Input() claves!:Array<string>;
   @Input() datos!:Array<Array<string>>;
+  // @Input() imagenes!:Array<string>;
 
 }
