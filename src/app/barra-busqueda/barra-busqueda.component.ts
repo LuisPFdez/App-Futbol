@@ -27,7 +27,6 @@ export class BarraBusquedaComponent implements OnInit{
           nombre: ligas[i].name
         };
         this.competiciones.push(datos);
-        console.log(this.competiciones[0])
       }
       this.busqueda.emit(this.competiciones[0].id)
     });

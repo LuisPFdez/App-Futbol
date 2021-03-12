@@ -9,11 +9,15 @@ export class PrincipalComponent implements OnInit {
 
   codigoLiga?: number;
   imagenesEquipos!: Array<string>;
+  clavesEquipos!: Array<string>;
+  datosEquipos!: Array<Array<any>>;
   clavesJugadores!: Array<string>;
   datosJugadores!: Array<Array<any>>;
+  cerrarJugadores : boolean;
 
   constructor(private datos: DataService) {
     this.imagenesEquipos = new Array();
+    this.cerrarJugadores = true;
   }
 
   ngOnInit(): void {
@@ -30,7 +34,6 @@ export class PrincipalComponent implements OnInit {
       claves = Object.keys(datos[0]);
       datos.forEach(valores => {
         var valoresA = Object.values(valores);
-        console.log(valoresA, valores)
         datosArray.push(valoresA);
       }
       );
@@ -44,10 +47,9 @@ export class PrincipalComponent implements OnInit {
   busqueda(evento: number): void {
     this.codigoLiga = evento;
     var datosEquipos: Array<any> = new Array();
-    this.datos.obtenerEquiposLiga(this.codigoLiga).subscribe((datosLiga)=>{
-      var equipos:any = JSON.parse(JSON.stringify(datosLiga)).api.teams;
-      console.log(equipos);
-      for(var i in equipos){
+    this.datos.obtenerEquiposLiga(this.codigoLiga).subscribe((datosLiga) => {
+      var equipos: any = JSON.parse(JSON.stringify(datosLiga)).api.teams;
+      for (var i in equipos) {
         let datos = {
           id: equipos[i].team_id,
           nombre: equipos[i].name,
@@ -58,11 +60,38 @@ export class PrincipalComponent implements OnInit {
 
       }
       var { claves, datosArray } = this.convertirATabla(datosEquipos);
-      this.clavesJugadores = claves;
-      this.datosJugadores = datosArray;
+      this.clavesEquipos = claves;
+      this.datosEquipos = datosArray;
     });
 
 
+
+  }
+  equipoSelecionado(datos: any) {
+    this.cerrarJugadores = false;
+    var datosJugadores:Array<any> = new Array();
+    this.datos.obtenerJugadores(datos.id).subscribe((datosEquipo) => {
+      var jugadores: any = JSON.parse(JSON.stringify(datosEquipo)).api.players;
+      for (var i in jugadores) {
+        let datos = {
+          nombre: jugadores[i].player_name,
+          primerApellido: jugadores[i].firstname,
+          segundoApellido: jugadores[i].lastname,
+          posicion: jugadores[i].position,
+          pais: jugadores[i].nationality,
+          edad: jugadores[i].age
+        };
+        datosJugadores.push(datos);
+
+      }
+      var { claves, datosArray } = this.convertirATabla(datosJugadores);
+      this.clavesJugadores = claves;
+      this.datosJugadores = datosArray;
+    });
+  }
+
+  cerrar(){
+    this.cerrarJugadores = true;
   }
 
 }

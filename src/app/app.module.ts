@@ -8,7 +8,8 @@ import { BarraBusquedaComponent } from './barra-busqueda/barra-busqueda.componen
 import { PrincipalComponent } from './principal/principal.component';
 
 import { HttpClientModule } from "@angular/common/http";
-import { TablasComponent } from './tablas/tablas.component'
+import { TablasComponent } from './tablas/tablas.component';
+import { LoginComponent } from './login/login.component'
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TablasComponent } from './tablas/tablas.component'
     AppComponent,
     BarraBusquedaComponent,
     PrincipalComponent,
-    TablasComponent
+    TablasComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

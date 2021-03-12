@@ -3,7 +3,7 @@
         <th *ngFor="let clave of claves">{{clave}}</th>
     </thead>
     <tbody>
-        <tr *ngFor="let dato of datos">
+        <tr #padre *ngFor="let dato of datos" (click)="clubSelecionado(padre)">
             <td *ngFor="let valor of dato">{{valor}}</td>
         </tr>
     </tbody>

@@ -25,4 +25,9 @@ export class DataService {
     var url:string = "https://api-football-v1.p.rapidapi.com/v2/teams/league/".concat(idLiga.toString());
     return this.http.get<Object>(url, { headers: this.header });
   }
+  obtenerJugadores(idJugador:Number):Observable<Object>{
+    var url:string = "https://api-football-v1.p.rapidapi.com/v2/players/squad/".concat(idJugador.toString(),"/2019");
+    console.log(url);
+    return this.http.get<Object>(url,{ headers: this.header});
+  }
 }
