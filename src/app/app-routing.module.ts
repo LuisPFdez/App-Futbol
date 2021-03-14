@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { from } from 'rxjs';
 
-import { PrincipalComponent } from "./principal/principal.component"
+import { PrincipalComponent } from "./components/principal/principal.component"
 
 const routes: Routes = [
   {

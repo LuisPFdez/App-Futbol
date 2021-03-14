@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { DataService } from "../services/data.service";
+import { DataService } from "../../services/data.service";
 // import { NgModel } from '@angular/forms';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from "../services/data.service";
+import { DataService } from "../../services/data.service";
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -23,24 +23,32 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  //Tablas necesita recibir dos variables mediante input. 
-  //convertir a trabla se encarga de Recibir un Array de objectos y pasarlos a un formato aceptado por el componente tablas
+  //El componenete principal implementa el componente tablas, este necesita como inputs dos Arrays. 
+  //Como los datos recibidos de la api son objetos es necesario pasar el objecto a dos Arrays distintos
+  //Recibe un array de objetos como parametro
   private convertirATabla(datos: Array<any>) {
-
+    //El array claves compuesto por strings, almacenara las claves del objeto
     var claves: Array<string> = new Array();
+    //El array datosArray, corresponde a los valores el objeto, esta compuesto por Arrays, que corresponden a las filas 
+    //y este esta compuesto por cualquier valor, normalmente strings o , valores o columnas de la tabla
     var datosArray: Array<Array<any>> = new Array();
+    //comprueba que datos no sea ni undefined ni tenga una longitud menor a 1
     if (this.datos != undefined && datos.length >= 1) {
-
+      //Obtiene los datos de primer valor, que siempre ha de existir, puesto que se da por echo que todos los objetos estan
+      //compuestos por las mismas claves
       claves = Object.keys(datos[0]);
+      //Recorre el array de datos y extrae las claves del objeto en un array, para añadirlo a datosArray
       datos.forEach(valores => {
         var valoresA = Object.values(valores);
         datosArray.push(valoresA);
       }
       );
     } else {
+      //En caso de ser indefinido o datos no tenga una longitud mínima de 1 inicializa datosArray y claves como arrays vacios
       claves = [];
       datosArray = [];
     }
+    //Al final devuelve claves y datosArrays
     return { claves, datosArray };
   }
 

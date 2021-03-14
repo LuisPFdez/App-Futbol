@@ -1,0 +1,10 @@
+<div class="tabla">
+    <div class="cabecera">
+        <span *ngFor="let clave of claves">{{clave}}</span>
+    </div>
+    <div class="cuerpo">
+        <div class="fila" #padre *ngFor="let dato of datos" (click)="clubSelecionado(padre)">
+            <span class="columna" *ngFor="let valor of dato">{{valor}}</span>
+        </div>
+    </div>
+</div>
