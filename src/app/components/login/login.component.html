@@ -1,3 +1,14 @@
-<div>
-    <p>Into</p>
-</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title"> Introduce tu usuario y contraseña</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <label>Usuario</label><br>
+            <input type="text" placeholder="Introduce el usuario" class="form-control" #usuario><br>
+            <label>Password</label><br>
+            <input type="password" placeholder="Introduce la contraseña" class="form-control" #password><br>
+            <input type="button" class="btn btn btn-outline-success mt-3" (click)="login(usuario.value,password.value)" value="LogIn">
+        </form>
+    </div>
+</ng-template>

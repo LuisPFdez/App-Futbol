@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../../services/data.service";
+import { ToastrService } from "ngx-toastr"
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -14,8 +15,8 @@ export class PrincipalComponent implements OnInit {
   clavesJugadores!: Array<string>;
   datosJugadores!: Array<Array<any>>;
   cerrarJugadores : boolean;
-
-  constructor(private datos: DataService) {
+  usuario!:string;
+  constructor(private datos: DataService, private toastr :ToastrService) {
     this.imagenesEquipos = new Array();
     this.cerrarJugadores = true;
   }
@@ -96,6 +97,11 @@ export class PrincipalComponent implements OnInit {
       this.clavesJugadores = claves;
       this.datosJugadores = datosArray;
     });
+  }
+
+  usuarioF(nombre:string){
+    this.toastr.success("Bienvenido "+nombre, "Inicio de sesion exitoso")
+    this.usuario = nombre;
   }
 
   cerrar(){
