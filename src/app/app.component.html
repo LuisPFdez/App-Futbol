@@ -4,11 +4,12 @@
   <span></span>
 </header>
 <nav>
-  <a></a>
-  <a></a>
+  <a routerLink="">Equipos</a><br>
+  <a routerLink="/eventos">Eventos</a>
 </nav>
 <main>
-
+<h1>Bienvenido {{usuario}}</h1>
+<app-login (salida)="usuarioF($event)"></app-login>
 <router-outlet></router-outlet>
 </main>
 <footer>

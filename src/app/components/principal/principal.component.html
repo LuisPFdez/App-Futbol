@@ -1,4 +1,4 @@
-<app-barra-busqueda (busqueda)="busqueda($event)"></app-barra-busqueda> -->
+<app-barra-busqueda (busqueda)="busqueda($event)"></app-barra-busqueda>
 <section>
     <app-tablas (salida)="equipoSelecionado($event)" [datos]="datosEquipos" [claves]="clavesEquipos" ></app-tablas>
     <article *ngIf="!cerrarJugadores">
@@ -6,5 +6,3 @@
         <button (click)="cerrar()">cerrar</button>
     </article>
 </section>
-<app-login (salida)="usuarioF($event)"></app-login>
-<h1>Hola {{usuario}}</h1>

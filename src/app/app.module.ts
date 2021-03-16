@@ -11,7 +11,8 @@ import { TablasComponent } from './components/tablas/tablas.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { ToastrModule } from "ngx-toastr";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { EventosComponent } from './components/eventos/eventos.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
     BarraBusquedaComponent,
     PrincipalComponent,
     TablasComponent,
-    LoginComponent
+    LoginComponent,
+    EventosComponent
   ],
   imports: [
     BrowserModule,

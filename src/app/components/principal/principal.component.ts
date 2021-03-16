@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../../services/data.service";
-import { ToastrService } from "ngx-toastr"
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -15,8 +14,8 @@ export class PrincipalComponent implements OnInit {
   clavesJugadores!: Array<string>;
   datosJugadores!: Array<Array<any>>;
   cerrarJugadores : boolean;
-  usuario!:string;
-  constructor(private datos: DataService, private toastr :ToastrService) {
+  
+  constructor(private datos: DataService) {
     this.imagenesEquipos = new Array();
     this.cerrarJugadores = true;
   }
@@ -57,6 +56,7 @@ export class PrincipalComponent implements OnInit {
     this.codigoLiga = evento;
     var datosEquipos: Array<any> = new Array();
     this.datos.obtenerEquiposLiga(this.codigoLiga).subscribe((datosLiga) => {
+      console.log(datosLiga);
       var equipos: any = JSON.parse(JSON.stringify(datosLiga)).api.teams;
       for (var i in equipos) {
         let datos = {
@@ -80,6 +80,7 @@ export class PrincipalComponent implements OnInit {
     this.cerrarJugadores = false;
     var datosJugadores:Array<any> = new Array();
     this.datos.obtenerJugadores(datos.id).subscribe((datosEquipo) => {
+      
       var jugadores: any = JSON.parse(JSON.stringify(datosEquipo)).api.players;
       for (var i in jugadores) {
         let datos = {
@@ -99,10 +100,7 @@ export class PrincipalComponent implements OnInit {
     });
   }
 
-  usuarioF(nombre:string){
-    this.toastr.success("Bienvenido "+nombre, "Inicio de sesion exitoso")
-    this.usuario = nombre;
-  }
+  
 
   cerrar(){
     this.cerrarJugadores = true;
